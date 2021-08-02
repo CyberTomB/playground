@@ -10,7 +10,7 @@
             screen.
           </p>
           <!-- add code to element below -->
-          <div class="player-card text-center">
+          <div v-if="true==true" class="player-card text-center">
             <div>
               <img :src="state.player.photo" />
             </div>
@@ -38,7 +38,7 @@
             toggle the value to true to get it to show up again.
           </p>
           <!-- add code to element below -->
-          <div class="player-card text-center">
+          <div class="player-card text-center" v-if="state.showPlayer">
             <div>
               <img :src="state.player.photo" />
             </div>
@@ -66,24 +66,25 @@
             to make sure you can get the correct element to display. Feel free
             to add another condition.
           </p>
+          <input type="number" v-model="state.grade">
           <!-- v-if comparing grade and 90 -->
-          <div>
+          <div v-if="state.grade > 89">
             <p>The grade is 'A'.</p>
           </div>
           <!-- v-else-if comparing grade and 80 -->
-          <div>
+          <div v-if="state.grade > 79 && state.grade < 90">
             <p>The grade is 'B'.</p>
           </div>
           <!-- v-else-if comparing grade and 70 -->
-          <div>
+          <div v-if="state.grade > 69 && state.grade < 80">
             <p>The grade is 'C'.</p>
           </div>
           <!-- v-else-if comparing grade and 60 -->
-          <div>
+          <div div v-if="state.grade > 59 && state.grade < 70">
             <p>The grade is 'D'.</p>
           </div>
           <!-- v-else to display if all the others fail -->
-          <div>
+          <div div v-if="state.grade < 60">
             <p>The grade is 'F'.</p>
           </div>
         </div>
@@ -93,7 +94,7 @@
             Change the v-if directive to a v-show on the "player-card" element
             below.
           </p>
-          <div class="player-card text-center area" v-show="state.player.id">
+          <div class="player-card text-center area" v-show="state.showPlayer">
             <div>
               <img :src="state.player.photo" />
             </div>
@@ -129,7 +130,9 @@ export default {
   setup() {
     const state = reactive({
       //add a property to toggle the player-card here.
+      showPlayer: true,
       //add a property to set the number value here.
+      grade: 50,
       player: {
         photo: "https://robohash.org/D$",
         name: "D$",
